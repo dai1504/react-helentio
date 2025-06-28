@@ -1,0 +1,692 @@
+
+@use '../utilities/variables' as *
+@use '../utilities/functions' as *
+@use '../utilities/mixin' as *
+.home
+    &-banner
+        padding-top: size-pc(300,rem)
+        padding-bottom: size-pc(100,rem)
+        border-bottom: 1px solid #626573
+        position: relative
+        @media screen and ( max-width: 767.82px )
+            padding-top: size-pc(200,rem)
+
+        &::before
+            position: absolute
+            width: 100%
+            height: 80%
+            bottom: 0
+            left: 0
+            background: linear-gradient(to bottom, rgba(#9EA0AA,0) , #9EA0AA)
+            content: ''
+            opacity: 0.1
+        .el
+            &-1,&-2
+                position: absolute
+            &-1
+                top: -15%
+                right: 0
+                max-width: 60%
+                width: size-pc(550,rem)
+                @media screen and ( max-width: 767.82px )
+                    top: -10%
+                    
+            &-2 
+                bottom: -15%
+                left: -15%
+                max-width: 60%
+                width: size-pc(550,rem)
+                @media screen and ( max-width: 767.82px )
+                    bottom: -10%
+                    left: -10%
+
+
+        &-text
+            position: relative
+            z-index: 3
+            display: flex
+            flex-direction: column
+            row-gap: size-pc(30,rem)
+            h1 
+                font-size: size-pc(260,rem)
+                background: linear-gradient(to bottom,#A9ABB5,#505158 )
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                margin-bottom: 0
+                line-height: 1
+                width: fit-content
+                @media screen and ( max-width: 1199.82px )
+                    font-size: size-pc(180, rem)
+                @media screen and ( max-width: 767.82px )
+                    font-size: size-pc(150, rem)
+                @media screen and ( max-width: 575.82px )
+                    font-size: size-pc(120, rem)
+                @media screen and ( max-width: 400.82px )
+                    font-size: size-pc(90, rem)
+            h3 
+                font-size: size-pc(80,rem)
+                background: linear-gradient(to right,#98763A,#FFE1AC )
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                margin-bottom: 0
+                line-height: 1
+                width: fit-content
+                font-family: $font-sub-title
+                font-weight: 100
+                @media screen and ( max-width: 1199.82px )
+                    font-size: size-pc(70, rem)
+                @media screen and ( max-width: 767.82px )
+                    font-size: size-pc(60, rem)
+                @media screen and ( max-width: 575.82px )
+                    font-size: size-pc(50, rem)
+                @media screen and ( max-width: 400.82px )
+                    font-size: size-pc(40, rem)
+            &.__2 
+                align-items: flex-end
+                h1
+                    margin-top: size-pc(-30,rem)
+        &-img 
+            @include thumb-img(50% , cover)
+            z-index: 1
+            &.__1
+                margin-right: size-pc(-50, rem)
+                @media screen and ( max-width: 767.82px )
+                    @include thumb-img(40% , cover)
+                    margin-top: size-pc(50, rem)
+                @media screen and ( max-width: 575.82px )
+                    margin-right: size-pc(-30, rem)
+            &.__2
+                margin-left: size-pc(-120, rem)
+                margin-right: size-pc(-250, rem)
+                @include thumb-img(22% , cover)
+                @media screen and ( max-width: 767.82px )
+                    @include thumb-img(40% , cover)
+                    margin-left: calc(size-pc(-50, rem) - 20px)
+                    margin-right: size-pc(0, rem)
+                    margin-top: size-pc(50, rem)
+                @media screen and ( max-width: 575.82px )
+                    margin-left: calc(size-pc(-30, rem) - 20px)
+    &-product-section
+        @include section-padding
+        border-bottom: 1px solid #626573
+        position: relative
+        z-index: 2
+        background: $color-bg
+        .content 
+            margin-bottom: size-pc(100, rem)
+            @media screen and ( max-width: 767.82px )
+                margin-bottom: size-pc(60, rem)
+    &-product-slide-section
+        border-bottom: 1px solid #626573
+        border-top: 1px solid #626573
+        position: relative
+        .el
+            position: absolute
+            max-width: size-pc(200, rem)
+            width: 30%
+            bottom: 0
+            left: 0
+            z-index: 1
+        &::before
+            position: absolute
+            width: 50%
+            height: 100%
+            top: 0
+            left: 0
+            background: linear-gradient(-220deg , #9EA0AA, rgba(#9EA0AA,0) 40%)
+            content: ''
+            opacity: 0.1
+            z-index: 0
+            @media screen and ( max-width: 767.82px )
+                width: 100%
+                
+        .content 
+            &-medium
+                margin-bottom: size-pc(100, rem)
+                margin-left: size-pc(50, rem)
+                position: relative
+                z-index: 3
+                @media screen and ( max-width: 767.82px )
+                    margin-top: size-pc(60, rem)
+                    margin-bottom: size-pc(60, rem)
+                    margin-right: size-pc(50, rem)
+                @media screen and ( max-width: 575.82px )
+                    margin-right: size-pc(30, rem)
+                    margin-left: size-pc(30, rem)
+            &.__2
+                margin-left: size-pc(250, rem)
+                position: relative
+                z-index: 3
+                @media screen and ( max-width: 767.82px )
+                    margin-left: size-pc(50, rem)
+                    margin-right: size-pc(50, rem)
+                    margin-bottom: size-pc(60, rem)
+                @media screen and ( max-width: 575.82px )
+                    margin-left: size-pc(30, rem)
+                    margin-right: size-pc(30, rem)
+        
+    &-content
+        &-section 
+            @include section-padding
+            position: relative
+            padding-top: 0
+            &::before
+                position: absolute
+                width: 100%
+                height: 90%
+                top: 0
+                left: 0
+                background: linear-gradient(to bottom , #9EA0AA, rgba(#9EA0AA,0))
+                content: ''
+                opacity: 0.1
+                z-index: 0
+            .container 
+                position: relative
+                z-index: 2
+            .content 
+                &.__1 
+                    margin-top: size-pc(100, rem)
+                    margin-bottom: size-pc(100, rem)
+                    @media screen and ( max-width: 767.82px )
+                        margin-top: size-pc(60, rem)
+                        margin-bottom: size-pc(60, rem)
+            .el
+                &-1,&-2
+                    position: absolute
+                &-1 
+                    top: 0
+                    right: 0
+                    max-width: 30%
+                    width: size-pc(350,rem)
+                &-2 
+                    bottom: 0
+                    left: 0
+                    max-width: 30%
+                    width: size-pc(250,rem)
+                    @media screen and ( max-width: 767.82px )
+                        left: -10%
+                        bottom: -10%
+                        
+                        
+        &-img 
+            overflow: hidden
+            @include thumb-img(calc(60% + size-pc(50,rem)) , cover)
+            margin-left: size-pc(-50,rem)
+            margin-bottom: size-pc(100, rem)
+            @media screen and ( max-width: 767.82px )
+                @include thumb-img(60% , cover)
+                margin-left: size-pc(0,rem)
+                margin-bottom: size-pc(60, rem)
+            &-2 
+                overflow: hidden
+                @include thumb-img(60% , cover)  
+                @media screen and ( max-width: 767.82px )
+                    margin-bottom: size-pc(50,rem)
+    &-img
+        &-section 
+            position: relative
+            @include section-padding
+            padding-bottom: 0
+        &-title 
+            margin-left: size-pc(50,rem)
+            margin-right: size-pc(-50,rem)
+            @include thumb-img(calc(40% + size-pc(50,rem)), cover)
+            @media screen and ( max-width: 767.82px )
+                margin-top: size-pc(60, rem)
+            @media screen and ( max-width: 575.82px )
+                @include thumb-img(calc(40% + size-pc(30,rem)), cover)
+                margin-right: size-pc(-30,rem)
+        &-big 
+            margin-top: size-pc(200, rem)
+            margin-right: size-pc(-50,rem)
+            @include thumb-img(calc(40% + size-pc(50,rem)), cover)
+            @media screen and ( max-width: 767.82px )
+                margin-top: size-pc(60, rem)
+                margin-right: size-pc(0,rem)
+                margin-left: size-pc(-50,rem)
+            @media screen and ( max-width: 575.82px )
+                margin-left: size-pc(-30,rem)
+                @include thumb-img(calc(40% + size-pc(30,rem)), cover)
+                
+    &-collection 
+        &-section 
+            overflow: hidden
+            position: relative
+            padding-bottom: size-pc(350, rem) 
+            z-index: 2
+            .el
+                position: absolute
+                bottom: 0
+                right: 0
+                max-width: 45%
+                width: size-pc(550,rem)
+            &::before
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 0
+                width: 100%
+                height: 90%
+                background: linear-gradient(-45deg, #9EA0AA, rgba(#9EA0AA,0) 20%)
+                opacity: 0.1
+            .line-bottom
+                width: 100%
+                height: 1px 
+                background-color: #626573
+                position: absolute
+                bottom: 0
+                left: 0
+            .content-big
+                border-left: 1px solid #626573   
+                padding-top: size-pc(150, rem) 
+                padding-left:  size-pc(150, rem) 
+                @media screen and ( max-width: 767.82px )
+                    border-left: 0
+                    border-top: 1px solid #626573 
+                    margin-top: size-pc(60, rem) 
+                    padding-top: size-pc(60, rem) 
+                    padding-left:  size-pc(0, rem)   
+    &-list
+        &-section 
+            position: relative
+            z-index: 3
+            .content-big
+                max-width: size-pc(800, rem) 
+                margin: auto
+                align-items: center
+                transform: translateY(-35%)
+                margin-bottom: -15%
+                position: relative
+                &::before
+                    position: absolute
+                    z-index: 1
+                    left: calc(50% - 0.5px)
+                    top: 35%
+                    bottom: 0
+                    width: 1px
+                    background-color: #626573
+                    content: ''
+                .content-img 
+                    width: 100%
+                    @include thumb-img(60%,cover)
+                    z-index: 0
+                h3
+                    transform: translateY(40%)
+                    position: relative
+                    z-index: 2
+                h2
+                    transform: translateY(-60%)
+                    position: relative
+                    z-index: 2
+    &-faq-section
+        @include section-padding 
+        .content-big 
+            padding-left: size-pc(50, rem) 
+            padding-right: size-pc(50, rem) 
+            flex-direction: row
+            column-gap: size-pc(50, rem) 
+            margin-bottom: size-pc(100,rem)
+            @media screen and ( max-width: 767.82px )
+                margin-bottom: size-pc(60,rem)
+            @media screen and ( max-width: 575.82px )
+                padding-left: size-pc(30, rem) 
+                padding-right: size-pc(30, rem) 
+            h3 
+                margin-top: size-pc(40, rem) 
+.collection 
+    &-slide 
+        padding-top: size-pc(150, rem) 
+        @media screen and ( max-width: 767.82px )
+            padding-top: size-pc(60, rem) 
+        .swiper
+            overflow: unset
+            &-slide 
+                max-width: size-pc(700, rem)
+                @media screen and ( max-width: 767.82px )
+                    max-width: unset
+                &:nth-child(2n+ 2)
+                    max-width: size-pc(500, rem)
+                    @media screen and ( max-width: 767.82px )
+                        max-width: unset
+                        
+                    
+    &-card 
+        display: block
+        position: relative
+        
+        &:hover 
+            
+            .collection
+                &-card
+                    &-img 
+                        &::before
+                            opacity: 1
+                        img 
+                            transform: scale(1.05)
+        &-img 
+            z-index: 0
+            overflow: hidden
+            &::before
+                content: ''
+                position: absolute
+                width: 100%
+                height: 100%
+                top: 0
+                left: 0
+                background-color: rgba(#1e1e1e,0.5)
+                opacity: 0
+                transition: all .3s ease
+                z-index: 2
+            img 
+                transition: all 2s ease
+                z-index: 1
+        &-content  
+            position: absolute
+            z-index: 2
+            h3
+                font-size: size-pc(80, rem) 
+                color: #fff
+                font-family: $font-title
+                font-weight: 100
+                margin-bottom: 0
+        &.__1 
+             
+            .collection
+                &-card
+                    &-img 
+                        @include thumb-img(65%,cover)
+                    &-content 
+                        bottom: 0
+                        left: size-pc(40, rem) 
+                        transform: translateY(60%)
+                        transition: all .5s ease
+            &:hover 
+                .collection
+                    &-card
+                        &-content
+                            bottom: 50%
+                            left: 50%
+                            transform: translate(-50%, 50%)
+
+        &.__2
+            margin-left: size-pc(30, rem)
+            @media screen and ( max-width: 767.82px )
+                margin-left: size-pc(0, rem)
+            &:hover 
+                .collection
+                    &-card
+                        &-content
+                            top: 50%
+                            left: 50%
+                            transform: translate(-50%, -50%)
+                            h3 
+                                transform: rotate(0deg)
+                                writing-mode: horizontal-tb
+                                text-orientation: sideways 
+                            @media screen and ( max-width: 767.82px )
+                                top: unset
+                                bottom: 50%
+                                left: 50%
+                                transform: translate(-50%, 50%)
+                                h3 
+                                    transform: unset
+                                    writing-mode: unset
+                                    text-orientation: unset
+
+            .collection
+                &-card
+                    &-img 
+                        @include thumb-img(calc(154% - size-pc(30, rem)),cover)  
+                        @media screen and ( max-width: 767.82px )
+                            @include thumb-img(65%,cover)
+                    &-content 
+                        
+                        top: 50%
+                        left: 0 
+                        transform: translate(-60%, -50%) rotate(-90deg)
+                        transition: all .5s ease
+                        @media screen and ( max-width: 767.82px )
+                            top: unset
+                            bottom: 0
+                            left: size-pc(40, rem) 
+                            transform: translateY(60%)
+                            transition: all .5s ease
+                        
+.furniture
+    &-box
+        position: relative
+      
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: center
+        padding: size-pc(200,rem) size-pc(200,rem)
+        @media screen and ( max-width: 767.82px )
+            padding: size-pc(100,rem) size-pc(120,rem)
+    &-button 
+        position: absolute
+        z-index: 3
+        width: size-pc(70,rem)
+        height: size-pc(70,rem)
+        display: flex
+        align-items: center
+        justify-content: center
+        color: #393B44
+        background-color: #A9ABB5
+        font-size: size-pc(30,rem)
+        cursor: pointer
+        transition: all .3s ease
+        top: 50%
+        transform: translateY(-50%)
+        &:hover 
+            background-color: #FFE1AC
+        &.swiper-button-disabled
+            opacity: 0.3
+        &-next 
+            right: 15px
+        &-prev 
+            left: 15px
+    &-slide 
+        position: relative
+        z-index: 2
+        .swiper
+            &-button
+                &-next,&-prev 
+                    width: size-pc(70,rem)
+                    height: size-pc(70,rem)
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    color: #393B44
+                    background-color: #A9ABB5
+                    font-size: size-pc(30,rem)
+                    cursor: pointer
+                    transition: all .3s ease
+                    &::after
+                        color: #393B44
+                        transition: all .3s ease
+                    &:hover 
+                        background-color: #98763a
+                        &::after
+                            color: #fff
+    &-wrapper
+        position: relative
+        .bg 
+            position: absolute
+            width: 100%
+            left: 0
+            top: 0
+            height: 100%
+            z-index: 1
+            img 
+                position: absolute
+                width: 100%
+                left: 0
+                top: 0
+                height: 100%
+                object-fit: cover
+        .product-card
+            width: 100%
+
+
+.parallax
+    &-item
+        &-img 
+            position: relative
+            overflow: hidden
+            border-radius: 0px
+            padding-bottom: 35.5%
+            margin-bottom: 0
+            @media screen and ( max-width: 767.82px )
+                padding-bottom: 70%
+            .img-box
+                position: absolute
+                width: 100%
+                top: 0
+                left: 0
+                height: 110%
+
+            img 
+                top: 0
+                height: 110%
+                width: 100%
+                object-fit: cover
+            .parallax-image-content
+                position: absolute
+                bottom: size-pc(40,rem)
+                left: size-pc(40,rem)
+                width: auto
+                height: auto
+                text-align: left!important
+            .outer 
+                padding: 0
+                z-index: 2
+                h2 
+                    color: #fff
+                    margin-bottom: 0
+                    font-family: $font-body
+                    font-size: size-pc(40,rem)
+                p 
+                    font-style: italic
+                    margin-bottom: 0
+                    color: $color-5
+                    font-size: size-pc(24,rem)
+           
+.faq 
+    &-img 
+        margin-left: size-pc(100,rem)
+        @include thumb-img(60%,cover)
+        @media screen and ( max-width: 767.82px )
+            margin-left: size-pc(0,rem)
+            
+    &-accordition
+        width: 100%
+        margin-right: size-pc(0,rem)
+        padding-right: size-pc(100,rem)
+        border-right: 1px solid #626573
+        @media screen and ( max-width: 767.82px )
+            padding-right: size-pc(0,rem)
+            border-right: 0
+        //     margin-bottom: size-pc(60, rem)
+    
+
+        .accordion
+            &-item
+                background-color: unset
+                border: unset
+                border-bottom: 1px solid #626573
+                color: $color-text
+                &:first-of-type 
+                    .accordion-button
+                        border-top-left-radius: 0
+                        border-top-right-radius: 0
+                &:last-of-type
+                    border-bottom-right-radius: 0
+                    border-bottom-left-radius: 0
+                    .accordion-button
+                        border-bottom-right-radius: 0
+                        border-bottom-left-radius: 0
+                    > .accordion-header 
+                        .accordion-button
+                            &.collapsed
+                                border-bottom-right-radius: 0
+                                border-bottom-left-radius: 0
+            &-body 
+                
+                padding-left: size-pc(50,rem)
+                padding-bottom: size-pc(20,rem)
+                padding-top: size-pc(20,rem)
+                padding-right: size-pc(50,rem)
+                font-size: size-pc(24,rem)
+                @media screen and ( max-width: 575.82px )
+                    padding-right: size-pc(30,rem)
+                    padding-left: size-pc(30,rem)
+                p 
+                    font-size: size-pc(24,rem)
+            &-button
+                background-color: unset
+                color: #fff
+                font-size: size-pc(40,rem)
+                font-family: $font-title
+                display: flex
+                justify-content: space-between
+                align-items: center
+                
+                padding-left: size-pc(50,rem)
+                padding-top: size-pc(20,rem)
+                padding-bottom: size-pc(30,rem)
+                padding-right: size-pc(0,rem)
+                border-bottom: 1px solid #626573
+ 
+                    
+                @media screen and ( max-width: 767.82px )
+                    padding-right: size-pc(50,rem)
+                @media screen and ( max-width: 575.82px )
+                    padding-right: size-pc(30,rem)
+                    padding-left: size-pc(30,rem)
+                &::after
+                    display: none
+                &:focus,&:active
+                    
+                    box-shadow: none
+                    outline: none
+                span 
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    width: size-pc(40,rem)
+                    height: size-pc(40,rem)
+                    font-size: size-pc(30,rem)
+                    
+                    border: 1px solid rgba(#626573,0)
+                    position: relative
+                    color: #A3A5AF
+                    i 
+                        transition: all .3s ease
+                        transform: rotate(45deg)
+                    // &::before
+                    //     width: 1px
+                    //     height: 50%
+                    //     top: 25%
+                    //     left: calc(50% - 0.5px)
+                    //     content: ''
+                    //     position: absolute
+                    //     background-color: $color-text
+                    //     transition: all .3s ease
+                    // &::after
+                    //     width: 50%
+                    //     height: 1px
+                    //     top: calc(50% - 0.5px)
+                    //     left: 25%
+                    //     content: ''
+                    //     position: absolute
+                    //     background-color: $color-text
+                &:not(.collapsed)
+                    background-color: unset
+                    box-shadow: unset
+                    
+                    span
+                        color: #fff
+                        border: 1px solid #626573
+                        i 
+                            transform: rotate(-45deg)

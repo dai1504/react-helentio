@@ -1,0 +1,423 @@
+@use '../utilities/variables' as *
+@use '../utilities/functions' as *
+@use '../utilities/mixin' as *
+.product 
+    &-section 
+        padding: size-pc(100,rem) 0
+        @media screen and ( max-width: 767.82px )
+            padding: size-pc(60,rem) 0
+    &-slide
+        padding-bottom: size-pc(60,rem)
+        .container-custom
+            z-index: 3
+    &-card 
+        display: flex
+        flex-direction: column
+        background-color: #292932
+        padding: size-pc(40,rem)
+        row-gap: size-pc(40,rem)
+        border: 1px solid #292932
+        @media screen and ( max-width: 767.82px )
+            padding: size-pc(20,rem)
+            row-gap: size-pc(30,rem)
+            
+        &:hover 
+            border-color: $color-hover
+            .product 
+                &-card 
+                    &-img 
+                        img 
+                            &:nth-child(1)
+                                opacity: 0
+                            &:nth-child(2)
+                                opacity: 1
+                    &-title 
+                        color: $color-hover
+                                
+        &-img 
+            @include thumb-img(100%,contain)
+            img 
+                transition: all .3s ease
+                &:nth-child(2)
+                    opacity: 0
+        &-content
+            display: flex
+            justify-content: space-between
+            column-gap: size-pc(20,rem)
+            @media screen and ( max-width: 767.82px )
+                flex-direction: column
+                row-gap: size-pc(20,rem)
+        &-title 
+            color: #fff
+            margin-bottom: 0
+            font-size: size-pc(26,rem)
+            font-family: $font-sub-title
+            transition: all .3s ease
+            
+        &-price 
+            color: #fff
+            font-family: $font-sub-title
+            font-weight: 600
+            font-size: size-pc(26,rem)
+    &-nav 
+        display: flex
+        margin-bottom: size-pc(-35,rem)
+        position: relative
+        z-index: 3
+        &-btn 
+            width: size-pc(70,rem)
+            height: size-pc(70,rem)
+            display: flex
+            align-items: center
+            justify-content: center
+            color: #393B44
+            background-color: #A9ABB5
+            border: 0.5px solid #393B44
+            font-size: size-pc(30,rem)
+            cursor: pointer
+            transition: all .3s ease
+            &:hover 
+                background-color: #FFE1AC
+            &.swiper-button-disabled
+                opacity: 0.3
+    &-pagination 
+        &._center 
+            ul 
+                justify-content: center
+        ul
+            display: flex
+            margin: 0 -5px
+            margin-top: 30px
+            
+            li 
+                margin: 0 5px
+                &.active
+                    a 
+                        background-color:$color-primary
+                        color: #fff
+                        border-color:$color-primary
+
+                a
+                    width: size-pc(50,rem)
+                    height: size-pc(50,rem)
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    border: 1px solid $color-text
+                    font-size: size-pc(24,rem)
+                    border-radius: 0px
+                    &:hover ,&.active
+                        background-color:$color-primary
+                        color: #fff
+                        border-color:$color-primary
+    &-list 
+        &-section 
+            @include section-padding
+    &-quality
+        display: flex
+        width: 100%
+        border-top: 1px solid #626573
+        .qtybutton
+            display: flex
+            align-items: center
+            justify-content: center
+            color: #fff
+            font-weight: 400
+            font-size: size-pc(30, rem)
+            padding: size-pc(15, rem)
+            flex: 0 0 33.333333%
+            text-align: center
+            cursor: pointer
+            transition: all .3s ease
+            &:hover 
+                background-color: $color-2
+        .cart-plus-minus-box
+            -moz-appearance: textfield
+            appearance: textfield
+            width: 100%
+            // height: 100%
+            background-color: transparent
+            display: flex
+            text-align: center
+            align-items: center
+            justify-content: center
+            font-size: 16px
+            color: #fff
+            border: 1px solid #626573
+            border-width: 0px 1px 0px 1px
+            z-index: 1
+            flex: 0 0 33.333333%
+            &::-webkit-outer-spin-button,&::-webkit-inner-spin-button
+                -webkit-appearance: none
+.widget-product
+    font-size: size-pc(24,rem)
+    h3 
+        font-size: size-pc(32,rem)
+        font-weight: 300
+        text-transform: uppercase
+    label
+        padding: 10px  15px
+        cursor: pointer
+        line-height: 1
+        font-size: size-pc(22,rem)
+.product-content
+    &-section
+        position: relative
+        border-top: 1px solid #626573
+        @include section-padding
+        padding-top: 0
+        &::before
+            position: absolute
+            width: 100%
+            height: 90%
+            top: 0
+            left: 0
+            background: linear-gradient(to bottom , #9EA0AA, rgba(#9EA0AA,0))
+            content: ''
+            opacity: 0.1
+            z-index: 0
+        .container 
+            position: relative
+            z-index: 2
+        .content 
+            &.__1 
+                margin-top: size-pc(100, rem)
+                margin-bottom: size-pc(100, rem)
+                @media screen and ( max-width: 767.82px )
+                    margin-top: size-pc(60, rem)
+                    margin-bottom: size-pc(60, rem)
+        .el
+            &-1,&-2
+                position: absolute
+            &-1 
+                top: 0
+                right: 0
+                max-width: 30%
+                width: size-pc(350,rem)
+            &-2 
+                bottom: 0
+                left: 0
+                max-width: 30%
+                width: size-pc(250,rem)
+                @media screen and ( max-width: 767.82px )
+                    left: -10%
+                    bottom: -10%
+.detail-product-container
+    // border: 1px solid #fff
+    // border-width: 0px 0 1px 0
+    // margin-top: 100px
+    background-color: inherit
+    .box-pro-img-sticky
+        // height: 100%
+        // max-height: calc(100vh - 170px)
+        .sticky-top
+            width: 100%
+            // height: 100%
+            // max-height: calc(100vh - 90px)
+            display: flex
+            align-items: center
+            .swiper-product
+                width: 100%
+    .sticky-top
+        top: 90px 
+    
+    .swiper-product-detail
+        margin: auto
+        padding-bottom: 0px
+        
+        @media screen and ( min-width: 1025px )
+            padding-bottom: 0px
+        @media screen and ( min-width: 2000px )
+            // max-width: 1000px
+        .swiper-wrapper
+            // grid-template-columns: repeat(2,1fr)
+            // display: grid
+            // grid-auto-rows: auto
+            // column-gap: size-pc(15,rem)
+            // row-gap: size-pc(15,rem)
+            @media screen and ( min-width: 768px )
+                flex-wrap: wrap
+                column-gap: size-pc(15,rem)
+                row-gap: size-pc(15,rem)
+            .product-item 
+                flex: 0 0 100%
+                @media screen and ( min-width: 1025px )
+                    flex: 0 0 calc(50% - size-pc(7.5,rem))
+                &.__img-3d
+                    flex: 0 0 100%
+                    @media screen and ( min-width: 1025px )
+                        flex: 0 0 100%
+        
+        .swiper-button-white 
+            color: #58595b
+        .swiper-pagination
+            bottom: 15px
+        .swiper-pagination-bullet
+            background-color: #58595b
+            width: 15px
+            height: 15px
+            border-radius: 100px
+            &-active
+                background-color: #98763a
+    .thumb-pro-detail
+        position: relative
+        padding-bottom: 100%
+        background-color: #292932
+        display: block
+        img,iframe
+            position: absolute
+            width: 100%
+            height: 100%
+            top: 0
+            left: 0
+            object-fit: cover
+    .container-fluid
+        [class*=col-]
+            border-right: 1px solid #626573
+            // border-bottom: 1px solid #626573
+            padding-left: 0
+            padding-right: 0
+            &:last-child
+                border-right: unset
+            @media screen and ( max-width: 767.82px )
+                border-right: unset
+                
+    .product-content
+        position: relative
+        background-color: inherit
+        z-index: 10
+        .box-descript
+            padding: size-pc(25,rem) size-pc(40,rem)
+            border-top: 1px solid #626573
+            @media screen and ( max-width: 767.82px )
+                padding: size-pc(20,rem) size-pc(30,rem)
+            .tech-info__list
+                // display: flex
+                // flex-wrap: wrap
+                column-count: 2
+                list-style-type: disc
+                padding-left: 15px
+                li 
+                    margin-bottom: 10px
+                .item
+                    flex: 0 0 50%
+                    max-width: 50%
+                    width: 50%
+                    margin-bottom: 30px
+                    .subheadline
+                        font-size: 12px
+                        line-height: 18px
+                        text-transform: uppercase
+        .widget-product
+            padding: 0 size-pc(40,rem)
+            padding-top: size-pc(30,rem)
+            padding-bottom: 0px
+            margin-top: size-pc(30,rem)
+            @media screen and ( max-width: 767.82px )
+                
+                padding: 0 size-pc(25,rem) 
+                padding-top: size-pc(25,rem)
+            &.box-size
+                margin-top: 0
+            &:last-child
+                padding-bottom: size-pc(25,rem)
+            h3 
+                margin-bottom: 15px
+                font-weight: 300
+                color: #fff
+            .ruler-link
+                i 
+                    margin-right: 10px
+            .size-pick-div
+                display: flex
+                margin: 0 -5px
+                flex-wrap: wrap
+                margin-bottom: size-pc(25,rem)
+                label 
+                    border: 1px solid #626573
+                    margin: 0px 5px 10px 5px
+                    color: $color-text
+                    flex: 0 0 calc(50% - 10px)
+                    transition: all .3s ease
+                    background-color: #292932
+                    cursor: pointer
+                    &:hover
+                        background-color: $color-2
+                        color: #ffff
+
+                input
+                    display: none
+                    &:checked 
+                        + label
+                            background-color: $color-2
+                            color: #fff
+                            z-index: 3
+        .box-title
+            background-color: inherit
+            background-color: $color-bg
+            z-index: 10
+            .title
+                margin-bottom: size-pc(30,rem)
+                padding: 0 size-pc(40,rem)
+                padding-top: size-pc(40,rem)
+                @media screen and ( max-width: 767.82px )
+                    padding: 0 size-pc(25,rem)
+                    padding-top: size-pc(25,rem)
+                h1 
+                    font-size: size-pc(70,rem)
+                    margin-bottom: size-pc(20,rem)
+                    background: linear-gradient(to bottom,#A9ABB5,#505158 )
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+                    @media screen and ( max-width: 767.82px )
+                        ffont-size: size-pc(60,rem)
+                    @media screen and ( max-width: 575.82px )
+                        font-size: size-pc(40,rem)
+                h5 
+                    font-weight: 300
+                    font-size: size-pc(28,rem)
+                    opacity: 1
+                    text-transform: uppercase
+                    background: linear-gradient(to right,#98763A,#FFE1AC )
+                    -webkit-background-clip: text
+                    -webkit-text-fill-color: transparent
+                    width: fit-content
+                    @media screen and ( max-width: 575.82px )
+                        font-size: size-pc(26,rem)
+            .btn-product
+                display: flex
+                border: 1px solid #626573
+                border-width: 1px 0 1px 0
+                .btn-theme,button 
+                    flex: 0 0 50%
+                    max-width: 50%
+                    background: transparent
+                    background-color: #626573
+                    padding: 10px 25px
+                    border: none 
+                    outline: none
+                    font-weight: 200
+                    color: #fff
+                    font-size: size-pc(26, rem)
+                    font-weight: 400
+                    font-family: $font-link
+                    transition: all .3s ease
+                    &:hover 
+                        background-color: $color-2
+                        color: #fff
+                .box-price
+                    display: flex
+                    width: 100%
+                    flex: 0 0 50%
+                    max-width: 50%
+                    align-items: center
+                    justify-content: center
+                    color: #fff
+                    font-weight: 400
+                    font-size: size-pc(30, rem)
+.product-relate
+    &-section
+        border-top: 1px solid #626573
+        @include section-padding
+        .product-slide 
+            margin-top: size-pc(100,rem)

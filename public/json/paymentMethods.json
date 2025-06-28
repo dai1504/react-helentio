@@ -1,0 +1,10 @@
+{
+    "payments": [
+        { "id": "1", "src": "/images/p-1.svg", "alt": "Payment Method 1" },
+        { "id": "2", "src": "/images/p-2.svg", "alt": "Payment Method 2" },
+        { "id": "3", "src": "/images/p-3.svg", "alt": "Payment Method 3" },
+        { "id": "4", "src": "/images/p-4.svg", "alt": "Payment Method 4" },
+        { "id": "5", "src": "/images/p-5.svg", "alt": "Payment Method 5" }
+    ]
+}
+  

@@ -1,0 +1,166 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$90.00",
+            "imgUrl": "/images/product/1.png",
+            "imgHover": "/images/product/2.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "2",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$100.00",
+            "imgUrl": "/images/product/2.png",
+            "imgHover": "/images/product/3.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "3",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$80.00",
+            "imgUrl": "/images/product/3.png",
+            "imgHover": "/images/product/4.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "4",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$100.00",
+            "imgUrl": "/images/product/4.png",
+            "imgHover": "/images/product/1.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "5",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$110.00",
+            "imgUrl": "/images/product/1.png",
+            "imgHover": "/images/product/3.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "6",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$100.00",
+            "imgUrl": "/images/product/2.png",
+            "imgHover": "/images/product/4.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "7",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$110.00",
+            "imgUrl": "/images/product/3.png",
+            "imgHover": "/images/product/1.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "8",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$100.00",
+            "imgUrl": "/images/product/4.png",
+            "imgHover": "/images/product/2.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        },
+        {
+            "id": "9",
+            "title": "Onyx Wood Chair",
+            "catelogy": "Kitchen",
+            "url": "/",
+            "price": "$110.00",
+            "imgUrl": "/images/product/1.png",
+            "imgHover": "/images/product/4.png",
+            "images": [
+                "/images/product/1.png",
+                "/images/product/2.png",
+                "/images/home/5.jpg",
+                "/images/product/3.png",
+                "/images/product/4.png",
+                "/images/product/5.png",
+                "/images/product/6.png"
+            ]
+        }
+    ]
+}

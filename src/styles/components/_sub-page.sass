@@ -1,0 +1,69 @@
+@use '../utilities/variables' as *
+@use '../utilities/mixin' as *
+.subpage
+    &-banner 
+        position: relative
+        border-bottom: 1px solid #626573
+        &::before
+            position: absolute
+            width: 100%
+            height: 80%
+            bottom: 0
+            left: 0
+            background: linear-gradient(to bottom, rgba(#9EA0AA,0) , #9EA0AA)
+            content: ''
+            opacity: 0.1
+            z-index: 0
+        &-title 
+            position: relative
+            z-index: 2
+            padding: size-pc(60,rem) 0
+            .breadcrumb
+                &-item 
+                    &.active 
+                        background: linear-gradient(to right,#98763A,#FFE1AC )
+                        -webkit-background-clip: text
+                        -webkit-text-fill-color: transparent
+            h1 
+                font-size: size-pc(200,rem)
+                background: linear-gradient(to bottom,#A9ABB5,#505158 )
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                margin-bottom: 0
+                line-height: 1
+                width: fit-content
+                @media screen and ( max-width: 1199.82px )
+                    font-size: size-pc(160, rem)
+                @media screen and ( max-width: 767.82px )
+                    font-size: size-pc(130, rem)
+                @media screen and ( max-width: 575.82px )
+                    font-size: size-pc(100, rem)
+                @media screen and ( max-width: 400.82px )
+                    font-size: size-pc(80, rem)
+            h3 
+                font-size: size-pc(80,rem)
+                background: linear-gradient(to right,#98763A,#FFE1AC )
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                margin-bottom: 0
+                line-height: 1
+                width: fit-content
+                font-family: $font-sub-title
+                font-weight: 100
+                @media screen and ( max-width: 1199.82px )
+                    font-size: size-pc(70, rem)
+                @media screen and ( max-width: 767.82px )
+                    font-size: size-pc(60, rem)
+                @media screen and ( max-width: 575.82px )
+                    font-size: size-pc(50, rem)
+                @media screen and ( max-width: 400.82px )
+                    font-size: size-pc(40, rem)
+        &-img 
+            @include thumb-img(50% , cover)
+            z-index: 1
+            margin-right: size-pc(-50, rem)
+            @media screen and ( max-width: 767.82px )
+                @include thumb-img(50% , cover)
+            @media screen and ( max-width: 575.82px )
+                margin-right: size-pc(-30, rem)
+                margin-left: size-pc(-30, rem)

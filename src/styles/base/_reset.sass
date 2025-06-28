@@ -1,0 +1,387 @@
+@use '../utilities/variables' as *
+@use '../utilities/functions' as *
+@use '../utilities/mixin' as *
+*
+  box-sizing: border-box
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+html
+  margin-right: 0px !important
+  overflow: visible !important
+  // overflow-x: hidden
+  // font-size: $size_pc_root + vw
+  @media screen and ( max-width: 1199.82px )
+    font-size: 15px
+  @media screen and ( max-width: 1023.82px )
+    font-size: 15px
+  @media screen and ( max-width: 991.82px )
+    font-size: 15px
+  @media screen and ( max-width: 767.82px )
+    font-size: 15px
+  @media screen and ( max-width: 575.82px )
+    font-size: 15px
+  @media (min-width: 1500px)
+    font-size: 16px
+  @media (min-width: 2000px)
+    font-size: 17px
+    
+
+body
+  font-family: $font-body
+  color: $color-text
+  font-size: 15px
+  line-height: 1.4
+  font-weight: $font-regular
+  // overflow-x: hidden
+  background-color: $color-bg
+  // background-image: url(../images/bg-pattern.png)
+  // background-repeat: repeat
+  scroll-behavior: smooth 
+  &.smooth-scroll
+    overflow: hidden
+.scroll-content
+  background-color: $color-bg
+  // background-image: url(../images/bg-pattern.png)
+  background-repeat: repeat
+main 
+  position: relative
+#main
+  width: 100%
+  overflow-x: hidden
+h1,h2,h3,h4,h5,h6
+  font-family: $font-title
+  font-weight: 100
+  line-height: 1.3
+p 
+  line-height: 1.8
+a
+  text-decoration: none
+  color: $color-text
+  transition: all .3s ease
+  &:hover 
+    color: $color-3
+ul
+  list-style: none
+  padding-left: 0
+  margin-bottom: 0
+img
+  max-width: 100%
+  height: auto
+
+
+@media screen and ( max-width: 1399px )
+  .container, .container-lg, .container-md, .container-sm, .container-xl
+    max-width: 1320px
+h1
+  &.big-title.has-mask span, &.has-mask span
+    line-height: inherit
+    height: inherit
+    margin-right: 12px
+
+    > span
+      line-height: inherit
+      height: inherit
+      margin-right: 12px
+
+h2.has-mask span
+  line-height: inherit
+  height: inherit
+  margin-right: 10px
+
+  > span
+    line-height: inherit
+    height: inherit
+    margin-right: 10px
+
+h3.has-mask span
+  line-height: inherit
+  height: inherit
+  margin-right: 8px
+
+  > span
+    line-height: inherit
+    height: inherit
+    margin-right: 8px
+
+h4.has-mask span
+  line-height: inherit
+  height: inherit
+  margin-right: 7px
+
+  > span
+    line-height: inherit
+    height: inherit
+    margin-right: 7px
+
+h5.has-mask span
+  line-height: inherit
+  height: inherit
+  margin-right: 6px
+
+  > span
+    line-height: inherit
+    height: inherit
+    margin-right: 6px
+
+h6.has-mask span
+  line-height: inherit
+  height: inherit
+  margin-right: 5px
+
+  > span
+    line-height: inherit
+    height: inherit
+    margin-right: 5px
+
+.has-mask-fill
+  > span
+    position: relative
+    display: inline
+    -webkit-text-fill-color: rgba($color-text, 0.1)
+    -webkit-background-clip: text
+    background-repeat: no-repeat
+    background-image: linear-gradient($color-text, $color-text)
+    background-size: 0% 100%
+
+  &.block-title > span
+    display: block
+.has-animation
+  opacity: 0
+  -webkit-transition: translateY(30px)
+  transform: translateY(30px)
+  transition: all 0.2s ease
+
+  &.has-scale
+    opacity: 0
+    -webkit-transition: translateY(0px) scale(1.05)
+    transform: translateY(0px) scale(1.05)
+    transform-origin: 50% 0
+    will-change: transform
+
+  &.has-scale-vertical
+    opacity: 0
+    -webkit-transition: translateY(0px) scaleY(1.1)
+    transform: translateY(0px) scaleY(1.1)
+    transform-origin: 50% 0
+    will-change: transform
+
+  &.has-cover
+    opacity: 1
+    -webkit-transition: translateY(0px)
+    transform: translateY(0px)
+    overflow: hidden
+
+    &::after
+      content: ""
+      width: 100%
+      height: 100%
+      background-color: inherit
+      position: absolute
+      top: 0
+      right: 0
+      z-index: 10
+      -webkit-transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+      -o-transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+      transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+
+    &.animated::after
+      width: 0
+
+    img
+      opacity: 1
+      -webkit-transition: scale(1.05)
+      transform: scale(1.05)
+      -webkit-transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+      -o-transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+      transition: all 0.6s cubic-bezier(0.54, 0.49, 0.2, 1.01)
+
+    &.animated img
+      opacity: 1
+      -webkit-transition: scale(1)
+      transform: scale(1)
+
+.has-mask
+  margin-bottom: 10px
+
+  span
+    display: inline-table
+    overflow: hidden
+
+    > span
+      display: inline-table
+      margin: 0 !important
+      line-height: inherit
+      height: inherit
+      opacity: 0
+      -webkit-transform: translateY(60px)
+      transform: translateY(60px)
+.light-content 
+  .has-mask-fill 
+    > span
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.1)
+      background-image: linear-gradient(#fff, #fff)
+  .content 
+    h2 
+      color: #fff
+    p 
+      color: #fff
+.light-content 
+  .light-section 
+    .has-mask-fill 
+      > span
+        background-repeat: no-repeat
+        background-image: linear-gradient($color-text, $color-text)
+#content-scroll 
+  z-index: 1
+  position: relative
+
+.smooth-scroll 
+  #content-scroll
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: 1		
+    overflow: hidden
+
+.scroll-content 
+  cursor: default!important
+
+.scale-up 
+  .scroll-content 
+    cursor: grabbing!important
+
+.scrollbar-track 
+  background: transparent!important
+main
+  overflow: hidden
+	
+main 
+  .cd-main-content
+    width: 100%
+    >div
+      height: 100%
+      min-height: 100vh
+    &.cd-index
+      >div
+        vertical-align: middle
+.caption-timeline
+  overflow: hidden
+
+.caption-timeline
+  overflow: hidden
+
+.o-hidden
+  overflow: hidden
+.rest 
+  padding: 0 !important
+  margin: 0 !important
+
+.cursor-pointer
+  cursor: pointer
+.main-color
+  color: $color-2
+html.lenis 
+  height: auto
+
+
+.lenis.lenis-smooth 
+  scroll-behavior: auto
+
+
+.lenis.lenis-smooth [data-lenis-prevent] 
+  overscroll-behavior: contain
+
+
+.lenis.lenis-stopped 
+  overflow: hidden
+
+
+.lenis.lenis-scrolling iframe 
+  pointer-events: none
+
+.container-custom
+  width: 100%
+  padding: 0 size-pc(50, rem)
+  position: relative
+  z-index: 1
+  @media screen and ( max-width: 575.82px )
+    padding: 0 size-pc(30, rem)
+.header-container
+  max-width: 1800px
+  margin: 0 auto
+
+.section-line
+  border-left: 1px solid #626573
+  border-right: 1px solid #626573
+  max-width: 1800px
+  margin: 0 auto
+  @media screen and ( max-width: 1840px )
+    max-width: 1700px
+  @media screen and ( max-width: 1740px )
+    max-width: 1600px
+  @media screen and ( max-width: 1640px )
+    max-width: 1500px
+  @media screen and ( max-width: 1540px )
+    max-width: 1400px
+  @media screen and ( max-width: 1440px )
+    max-width: 100%
+    margin: 0 20px
+  @media screen and ( max-width: 767px )
+    margin: 0 10px
+.section-img-big
+  max-width: 2000px
+  margin: 0 auto
+  position: relative
+  z-index: 2
+  @media screen and ( max-width: 1840px )
+    max-width: 1900px
+  @media screen and ( max-width: 1740px )
+    max-width: 1800px
+  @media screen and ( max-width: 1640px )
+    max-width: 1700px
+  @media screen and ( max-width: 1540px )
+    max-width: 1600px
+  @media screen and ( max-width: 1440px )
+    max-width: 1500px
+  @media screen and ( max-width: 767px )
+
+
+.section-padding
+  @include section-padding
+.space-top 
+  padding-bottom: 114px
+  @media screen and ( max-width: 1199.82px )
+    padding-bottom: 107px
+  @media screen and ( max-width: 767.82px )
+    padding-bottom: 88.2px
+  @media screen and ( max-width: 575.82px )
+    padding-bottom: 75.78px
+    
+.anim-zoomin-wrap
+  position: absolute
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  overflow: hidden
+  img 
+    transition: unset!important
+
+::-webkit-scrollbar 
+  width: 10px
+
+::-webkit-scrollbar-track
+  background: #000000FF
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb 
+  background: rgba($color-2,0.6)
+  border-radius: 0px
+  transition: all .3s ease
+
+::-webkit-scrollbar-thumb:hover 
+  background: $color-2
+

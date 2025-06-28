@@ -1,0 +1,22 @@
+{
+    "collection": [
+        {
+            "id": "1",
+            "title": "LIVING ROOM",
+            "url": "/",
+            "image": "/images/home/c-1.jpg"
+        },
+        {
+            "id": "2",
+            "title": "KITCHEN",
+            "url": "/",
+            "image": "/images/home/c-2.jpg"
+        },
+        {
+            "id": "3",
+            "title": "BATHROOM",
+            "url": "/",
+            "image": "/images/home/c-3.jpg"
+        }
+    ]
+}

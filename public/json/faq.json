@@ -1,0 +1,23 @@
+{
+    "faqs": [{
+            "id": "1",
+            "question": "What types of furniture do you offer?",
+            "answer": "We offer a wide range of furniture, including living room, kitchen, and office furniture."
+        },
+        {
+            "id": "2",
+            "question": "Are your products customizable?",
+            "answer": "Yes, we provide customization options for many of our furniture pieces."
+        },
+        {
+            "id": "3",
+            "question": "Where are your products made?",
+            "answer": "Our products are crafted in various locations worldwide, ensuring the best quality."
+        },
+        {
+            "id": "4",
+            "question": "Furniture with a Purpose",
+            "answer": "We focus on sustainable and functional furniture that enhances your living space."
+        }
+    ]
+}

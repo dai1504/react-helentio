@@ -1,0 +1,185 @@
+@use '../utilities/variables' as *
+@use '../utilities/functions' as *
+@use '../utilities/mixin' as *
+.site-footer
+    width: 100%
+    position: relative
+    z-index: 0
+    
+    &-line 
+        border-left: 0.5px solid #626573
+        border-right: 0.5px solid #626573
+        max-width: 1800px
+        margin: 0 auto
+        font-size: size-pc(24,rem)
+        @media screen and ( max-width: 1840px )
+            max-width: 1700px
+        @media screen and ( max-width: 1740px )
+            max-width: 1600px
+        @media screen and ( max-width: 1640px )
+            max-width: 1500px
+        @media screen and ( max-width: 1540px )
+            max-width: 1400px
+        @media screen and ( max-width: 1440px )
+            max-width: 100%
+            margin: 0 20px
+        @media screen and ( max-width: 767px )
+            margin: 0 10px
+    &-top
+        margin-top: -1px
+    &-bottom
+        .container-footer-logo 
+            position: relative
+            padding-bottom: size-pc(60,rem)
+            &::before
+                position: absolute
+                width: 100%
+                height: 80%
+                bottom: 0
+                left: 0
+                background: linear-gradient(to bottom, rgba(#9EA0AA,0) , #9EA0AA)
+                content: ''
+                opacity: 0.1
+        .logo-big
+           
+            max-width: 1800px
+            margin: 0 auto
+            font-size: size-pc(24,rem)
+            @media screen and ( max-width: 1840px )
+                max-width: 1700px
+            @media screen and ( max-width: 1740px )
+                max-width: 1600px
+            @media screen and ( max-width: 1640px )
+                max-width: 1500px
+            @media screen and ( max-width: 1540px )
+                max-width: 1400px
+            @media screen and ( max-width: 1440px )
+                max-width: 100%
+                margin: 0 20px
+            @media screen and ( max-width: 767px )
+                margin: 0 10px
+            img 
+                width: 100%
+        .container-footer
+            max-width: 1800px
+            margin: 0 auto
+            font-size: size-pc(24,rem)
+            @media screen and ( max-width: 1840px )
+                max-width: 1700px
+            @media screen and ( max-width: 1740px )
+                max-width: 1600px
+            @media screen and ( max-width: 1640px )
+                max-width: 1500px
+            @media screen and ( max-width: 1540px )
+                max-width: 1400px
+            @media screen and ( max-width: 1440px )
+                max-width: 100%
+                margin: 0 20px
+            @media screen and ( max-width: 767px )
+                margin: 0 10px
+        .copy-right-wrapper
+            padding: size-pc(30,rem) 0
+            .container-footer
+                display: flex
+                justify-content: space-between
+                @media screen and ( max-width: 767.82px )
+                    flex-direction: column
+                    align-items: center
+                    row-gap: size-pc(20,rem)
+                    
+                .ct-right 
+                    font-size: size-pc(32,rem)
+                    font-family: $font-title
+                    color: #fff
+                    opacity: 0.3
+                .payment-list 
+                    display: flex
+                    flex-wrap: wrap
+                    gap: size-pc(8,rem)
+                    flex-wrap: wrap 
+                    img 
+                        width: 41px
+
+    &-box 
+        padding: size-pc(50,rem)
+        border-top: 1px solid #626573
+        border-left: 0.5px solid #626573
+        border-right: 0.5px solid #626573
+        display: flex
+        width: 100%
+        flex-direction: column
+        row-gap: size-pc(20,rem)
+        position: relative
+        @media screen and ( max-width: 575.82px )
+            padding: size-pc(30,rem)
+        &::before
+            position: absolute
+            width: 100%
+            height: 50%
+            bottom: 0
+            left: 0
+            background: linear-gradient(to bottom, rgba(#9EA0AA,0) , #9EA0AA)
+            content: ''
+            opacity: 0.1
+            z-index: 0
+        &.no-bf
+            &::before
+                display: none
+    &-title 
+        position: relative
+        z-index: 1
+        h3 
+            color: #fff
+            font-size: size-pc(48,rem)
+    &-info 
+        display: flex
+        justify-content: space-between
+        position: relative
+        z-index: 1
+        @media screen and ( max-width: 767.82px )
+            flex-direction: column
+            row-gap: size-pc(20,rem)
+            
+        .sfi-item
+            flex: 0 0 33.333333%
+            @media screen and ( max-width: 767.82px )
+                flex: 0 0 auto
+        p 
+            margin-bottom: 0
+    &-link
+        display: flex
+        flex-direction: column
+        row-gap: size-pc(20,rem)
+        position: relative
+        z-index: 1
+        a 
+            width: fit-content
+        &-social 
+            display: flex
+            justify-content: space-between
+            flex-wrap: wrap
+            gap: size-pc(20,rem)
+            position: relative
+            z-index: 1
+            a 
+                display: flex
+                align-items: center
+                width: fit-content
+                &:hover 
+                    i 
+                        background-color: $color-2
+                        color: #fff
+                        border-color: $color-2
+                i
+                    width: size-pc(45,rem)
+                    height: size-pc(45,rem)
+                    border: 1px solid #626573
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    font-size: size-pc(24,rem)
+                    transition: all .3s ease
+                span 
+                    margin-left: size-pc(25,rem)
+                    @media screen and ( max-width: 767.82px )
+                        margin-left: size-pc(15,rem)

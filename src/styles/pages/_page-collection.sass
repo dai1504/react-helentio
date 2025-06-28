@@ -1,0 +1,336 @@
+.collection
+    &-section
+        @include section-padding
+        padding-bottom: size-pc(150,rem)
+        @media screen and ( max-width: 767.82px )
+            padding-bottom: size-pc(100,rem)
+            
+        .gy-custom
+            --bs-gutter-x: 65px
+            --bs-gutter-y: 65px
+.product
+    &-filter 
+        display: flex
+        justify-content: space-between  
+        margin-bottom: size-pc(100,rem)
+        @media screen and ( max-width: 767.82px )
+            margin-bottom: size-pc(60,rem)
+        &-sort
+            display: flex
+            align-items: center
+            column-gap: 10px 
+            label 
+                color: #fff
+                font-size: size-pc(24,rem)
+        &-modal 
+body
+    &.sidebar-open
+        .sidebar-modal
+            opacity: 1
+            visibility: visible
+            transform: translate3d(0, 0, 0)
+            
+.sidebar-modal
+    position: fixed
+    z-index: 1000
+    top: 0
+    left: 0
+    background-color: #1b1b1b
+    width: 400px
+    height: 100vh
+    transform: translate3d(-100%, 0, 0)
+    transition: transform 0.4s ease-in-out
+    padding-top: 60px
+    
+    &-close-btn 
+        position: absolute
+        display: flex
+        align-items: center
+        justify-content: center
+        top: 20px
+        right: 25px
+        width: 30px
+        height: 30px
+        background-color: #333
+        font-size: 16px
+        cursor: pointer
+        border-radius: 50px
+        transition: transform 0.3s
+        &:hover 
+            transform: rotate(90deg)
+    &-content-inner
+        width: 100%
+        max-height: 220px
+        overflow-y: auto
+        margin-bottom: 50px
+        padding-bottom: 1px
+    &-inner 
+        height: 100%
+        overflow-y: auto
+        padding: 0 6% 10% 6%
+        
+        &::-webkit-scrollbar 
+         
+            width: 5px
+
+
+        &::-webkit-scrollbar-track 
+            background: transparent
+
+        &::-webkit-scrollbar-thumb 
+            background: $color-2
+            border-radius: 10px
+    &-widget 
+        position: relative
+        h3 
+            position: relative
+            margin-bottom: 40px
+            font-size: size-pc(50,rem)
+            color: #fff
+            &::after
+                position: absolute
+                display: block
+                content: ""
+                left: 0
+                bottom: -15px
+                width: 35px
+                height: 1px
+                background-color: #555
+        &.hidden 
+            .sidebar-modal-caret
+                &::before
+                    transform: rotate(180deg)
+    &-caret 
+        position: absolute
+        top: 10px
+        right: 0
+        font-size: 14px
+        color: #FFF
+        opacity: .5
+        cursor: pointer
+        &:hover 
+            opacity: 1
+        &::before 
+            font-family: "Font Awesome 6 Pro"
+            content: "\f077"
+            font-weight: 900
+            display: inline-block
+            font-style: normal
+            font-variant: normal
+            text-rendering: auto
+            -webkit-font-smoothing: antialiased
+            transition: transform 0.3s
+    &-categories
+        padding-bottom: 25px
+        margin-bottom: 25px
+        > ul
+            > li 
+                padding: 0
+                &.active 
+                    a 
+                        color: #fff
+                a
+                    display: block
+                    text-decoration: none
+                    font-size: size-pc(26,rem)
+                    font-weight: normal
+                    color: $color-text
+                    line-height: 1
+                    padding: 10px 0px
+                    transition: all 0.2s ease-in-out 0s
+                    span 
+                        position: relative
+                        float: right
+                        top: -5px
+                        background-color: rgb(133 133 133 / 22%)
+                        padding: 8px 9px 8px 9px
+                        text-align: center
+                        font-size: 13px
+                        font-weight: normal
+                        color: #CCC
+                        overflow: hidden
+                        z-index: 1
+                        border-radius: 100px
+                        transition: all .2s ease-in-out
+                    &:hover
+                        color: #fff
+                        span 
+                            background-color: rgb(133 133 133 / 40%)
+                            color: #FFF
+    &-price
+        &-range
+            display: flex
+            align-items: center
+            color: $color-text
+            column-gap: 10px
+        &-box
+            width: 100%
+            position: relative
+            display: flex
+            align-items: center
+            border-bottom: 1px solid rgb(136 136 136 / 60%)
+            padding: 10px 0
+            column-gap: 10px
+            &:has(> input:focus)  
+                border-color: #fff
+            &-currency 
+                
+                font-size: size-pc(24,rem)
+                color: #fff
+            input[type=number]
+                appearance: textfield
+                -moz-appearance: textfield
+            input
+                &::-webkit-outer-spin-button,&::-webkit-inner-spin-button 
+                    -webkit-appearance: none
+                    margin: 0
+    &-form-control 
+        background-color: transparent
+        padding-left: 0
+        padding-right: 0
+        font-size: size-pc(24,rem)
+        border-width: 0
+        border-style: unset
+        border-radius: 0px
+        padding-left: 0px 
+        width: 100%
+        color: #fff
+        &:focus 
+            color: #FFF
+            background-color: transparent
+            outline: none
+            box-shadow: none
+            ~ .sidebar-modal-price-box
+                border-color: #fff
+                  
+.select2-container
+    min-width: 150px
+.select2-container--default 
+    .select2-results__option--selected
+        background-color: #292932
+    .select2-results__option--highlighted
+        &.select2-results__option--selectable
+            background-color: $color-primary
+    .select2-selection--single
+        background-color: $color-bg
+        border: 1px solid rgba(#A9ABB5,0.5)  
+        border-radius: 0px
+        padding: size-pc(15,rem) size-pc(40,rem)
+        padding-left: size-pc(15,rem)
+        padding-right: size-pc(40,rem)
+        font-size: size-pc(22,rem)
+        position: relative
+        height: auto
+        @media screen and ( max-width: 767.82px )
+            padding: size-pc(15,rem) size-pc(30,rem)
+            padding-left: size-pc(15,rem)
+            padding-right: size-pc(30,rem)  
+        @media screen and ( max-width: 575.82px )
+            padding: size-pc(10,rem) size-pc(15,rem) 
+            padding-left: size-pc(10,rem)
+            padding-right: size-pc(30,rem) 
+        .select2-selection__rendered
+            color: $color-text
+            line-height: 1.4
+            font-weight: 400
+            padding-left: 0
+            padding-right: 0
+            font-size: size-pc(24,rem)
+        .select2-selection__arrow
+            height: 100%
+            width: size-pc(40,rem)
+            @media screen and ( max-width: 767.82px )
+                width: size-pc(30,rem)
+.select2-dropdown
+    background-color: $color-bg
+    border: 1px solid rgba(#A9ABB5,0.5)
+    border-radius: 0
+
+.select2-results__option
+    font-size: size-pc(22,rem)
+    padding: size-pc(10,rem) size-pc(15,rem)
+
+
+.tt-form
+    &-check,&-radio 
+        position: relative
+        display: block
+        margin: 0 0 10px 5px
+        line-height: 1.2
+
+        input
+            position: absolute
+            top: 50%
+            opacity: 0
+            cursor: pointer
+            transform: translate3d(0, -50%, 0)
+            &:disabled
+                cursor: not-allowed
+                ~ label 
+                    cursor: not-allowed
+                    opacity: 0.3
+            &:checked   
+                ~ label 
+                    &::after
+                        display: block
+        label 
+            position: relative
+            display: inline
+            margin-bottom: 10px
+            padding-left: 26px
+            vertical-align: middle
+            font-size: 16px
+            font-weight: normal
+            cursor: pointer
+            transition: all 0.2s ease-in-out
+            width: 100%
+            &::before
+                position: absolute
+                top: 1px
+                left: -0
+                display: block
+                width: 18px
+                height: 18px
+                pointer-events: none
+                content: ""
+                background-color: #4e4e4e
+                border-radius: 3px
+                transition: background-color 0.2s
+            &::after
+                position: absolute
+                display: none
+                content: ""
+                top: 5px
+                left: 6px
+                width: 6px
+                height: 10px
+                border: solid #FFF
+                border-width: 0 2px 2px 0
+                transform: rotate(45deg)
+            &:hover 
+                color: #fff
+            > span 
+                float: right
+                margin: 4px 15px 0 0
+                font-size: 13px
+        &:hover 
+            label
+                &::before
+                    background-color: #5a5a5a
+
+        
+
+    &-radio 
+        label
+            &::before
+                border-radius: 100px
+            &::after 
+                top: 9px
+                left: 6px
+                width: 4px
+                height: 4px
+                background-color: #FFF
+                border-radius: 100%
+
+
+
