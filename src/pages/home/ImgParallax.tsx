@@ -14,7 +14,8 @@ export default function ImgParallax() {
       const hasParallax = gsap.utils.toArray('.has-parallax');
 
       hasParallax.forEach((hParallax) => {
-        const bgImage = hParallax.querySelector('img');
+        const element = hParallax as HTMLElement;
+        const bgImage = element.querySelector('img');
 
         if (!bgImage) return;
 
@@ -33,9 +34,9 @@ export default function ImgParallax() {
         );
 
         ScrollTrigger.create({
-          trigger: hParallax,
+          trigger: element,
           start: 'top 100%', 
-          end: () => `+=${hParallax.offsetHeight + window.innerHeight}`,
+          end: () => `+=${element.offsetHeight + window.innerHeight}`,
           animation: parallax,
           scrub: true,
           
