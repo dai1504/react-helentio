@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import ButtonSite from '../button/button';
 import { useCart } from '@/lib/cartContext';
-import { useGsapFadeIn } from '../useGsapFadeIn';
 
 export default function Header() {
     const [open, setOpen] = useState(false);
