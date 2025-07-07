@@ -5,11 +5,14 @@ import NavMenu from './NavMenu';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import ButtonSite from '../button/button';
+import { useCart } from '@/lib/cartContext';
+import { useGsapFadeIn } from '../useGsapFadeIn';
 
 export default function Header() {
     const [open, setOpen] = useState(false);
     const [navLit, setNavLit] = useState(false);
-
+    const { state, toggleCart, closeCart, removeItem, getTotalItems, getTotalPrice } = useCart();
+    
     const toggleMenu = () => {
         setOpen((prev) => !prev);
         setNavLit((prev) => !prev);
@@ -28,10 +31,10 @@ export default function Header() {
                     </div>
                     <div className="page-title-menu"></div>
                     <div className="site-header-btn-right">
-                        <div className="cart-btn">
+                        <div className="cart-btn" onClick={toggleCart}>
                             <i className="fal fa-cart-shopping"></i>
                             <span>Shopping Cart</span>
-                            <span className="cart-number">2</span>
+                            <span className="cart-number">{getTotalItems()}</span>
                         </div>
                         <div className={clsx("navbar_hamburger", { 'open': open })} onClick={toggleMenu}>
                             <div className="navbar_hamburger-inner">
@@ -95,52 +98,57 @@ export default function Header() {
                 </div>
             </div>
 
-                <div className="cart-container">
+                <div className={clsx("cart-container", { 'open': state.isOpen })}>
                     <div className="cart-title">
                         <h3>Cart</h3>
-                        <div className="cart-close" title="Close"><i className="fas fa-times"></i></div>
+                        <div className="cart-close" title="Close" onClick={closeCart}><i className="fas fa-times"></i></div>
                     </div>
                     <div className="cart-list">
-                        <ul>
-                            <li>
-                                <div className="cart-item"> 
-                                    <a href="#" className="cart-item-img"> 
-                                        <Image src="/images/product/1.png" alt="" layout="intrinsic" width={50} height={50} /> 
-                                    </a>
-                                    <div className="cart-item-info">
-                                        <div className="cart-item-cate"> <span>Wine</span> </div> 
-                                        <a href="#" className="cart-item-title"> LUCTUSON CHARDONNAY </a>
-                                        <div className="cart-item-price"> <span>$99.00</span> </div>
-                                    </div>
-                                    <div className="cart-remove"> <a href="#"> <i className="fal fa-trash-alt"></i> </a> </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="cart-item"> 
-                                    <a href="#" className="cart-item-img"> 
-                                        <Image src="/images/product/2.png" alt="" layout="intrinsic" width={50} height={50} /> 
-                                    </a>
-                                    <div className="cart-item-info">
-                                        <div className="cart-item-cate"> <span>Wine</span> </div> 
-                                        <a href="#" className="cart-item-title"> NEW CABERNET SAUVIGNON </a>
-                                        <div className="cart-item-price"> <span>$99.00</span> </div>
-                                    </div>
-                                    <div className="cart-remove"> <a href="#"> <i className="fal fa-trash-alt"></i> </a> </div>
-                                </div>
-                            </li>
-                        </ul>
+                        {state.items.length === 0 ? (
+                            <div className="empty-cart">
+                                <p>Your cart is empty</p>
+                            </div>
+                        ) : (
+                            <ul>
+                                {state.items.map((item) => (
+                                    <li key={item.id}>
+                                        <div className="cart-item"> 
+                                            <Link href={`/products/${item.id}`} className="cart-item-img"> 
+                                                <Image src={item.image} alt={item.title} width={50} height={50} /> 
+                                            </Link>
+                                            <div className="cart-item-info">
+                                                <div className="cart-item-cate"> <span>{item.category || 'Product'}</span> </div> 
+                                                <Link href={`/products/${item.id}`} className="cart-item-title"> {item.title} </Link>
+                                                <div className="cart-item-price"> <span>{item.price}</span> </div>
+                                                {item.color && (
+                                                    <div className="cart-item-color"> <span>Color: {item.color}</span> </div>
+                                                )}
+                                                <div className="cart-item-quantity"> <span>Qty: {item.quantity}</span> </div>
+                                            </div>
+                                            <div className="cart-remove"> 
+                                                <div className='cursor-pointer' onClick={(e) => { e.preventDefault(); removeItem(item.id); }}> 
+                                                    <i className="fal fa-trash-alt"></i> 
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
-                    <div className="cart-button">
-                        <div className="text">
-                            <h4>Subtotal:</h4> <span>$40.00</span>
+                    {state.items.length > 0 && (
+                        <div className="cart-button">
+                            <div className="text">
+                                <h4>Subtotal:</h4> <span>${getTotalPrice().toFixed(2)}</span>
+                            </div>
+                            <div className="btn-group"> 
+                                <button type="submit">Checkout</button> 
+                                <a href="#" className="btn-site ar-top"> <span className="btn-t">View Cart</span> <span className="btn-ic"><i className="fal fa-arrow-right"></i></span></a>
+                            </div>
                         </div>
-                        <div className="btn-group"> 
-                            <button type="submit">Checkout</button> 
-                            <a href="#" className="btn-site ar-top"> <span className="btn-t">View Cart</span> <span className="btn-ic"><i className="fal fa-arrow-right"></i></span></a>
-                        </div>
-                    </div>
+                    )}
                 </div>
-            
+                <div className={clsx("body-overlay", { 'opened': state.isOpen })} onClick={closeCart}></div>
 
         </>
     );

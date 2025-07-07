@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Loading from "./loading";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import { CartProvider } from "@/lib/cartContext";
 
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -13,7 +14,6 @@ import "../../public/packages/select2.min.css";
 import "../../public/packages/meanmenu.min.css";
 import "@/styles/main.sass";
 import ScriptLoader from "@/components/ScriptLoader";
-import ScrollEffects from "@/components/ScrollEffects";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {
@@ -26,15 +26,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <ScriptLoader />
-      {/* <ScrollEffects /> */}
       <body>
           <Loading />
+          <CartProvider>
           <main>
             <Header />
-            <div className="body-overlay"></div>
+            
             {children}
             <Footer />
           </main>
+          </CartProvider>
 
          
       </body>

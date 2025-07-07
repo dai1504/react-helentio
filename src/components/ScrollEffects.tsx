@@ -1,38 +1,43 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReactNode, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollEffects = () => {
-  useEffect(() => {
-    if (typeof window === 'undefined') return; // Tránh chạy khi SSR
-  
-    gsap.registerPlugin(ScrollTrigger);
-    const fadeElements = document.querySelectorAll(".anim-fadein");
-  
-    fadeElements.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
+export function FadeInSection({ children, className = "" }: { children: ReactNode, className?: string }) {
+  const main = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      const boxes = gsap.utils.toArray('.anim-fadein');
+      boxes.forEach((el) => {
+        gsap.to(el, {
           y: 0,
-          duration: 1,
-          ease: "power2.out",
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power2.out',
+          clearProps: "all",
+          autoAlpha: 1,
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
-            toggleActions: "play none none reset",
+            start: 'top 90%',
+            
+            scrub: true,
+            markers: true,
           },
-        }
-      );
-    });
-  }, []);
+        });
+      });
+    },
+    { scope: main }
+  );
 
-  return null;
-};
+  return (
+    <div ref={main} className={className}>
+      {children}
+    </div>
+  );
+}
 
-export default ScrollEffects;

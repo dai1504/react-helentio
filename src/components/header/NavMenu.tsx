@@ -14,11 +14,15 @@ export default function NavMenu() {
   const [menuData, setMenuData] = useState<MenuItem[]>([]);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("/json/menu.json")
       .then((res) => res.json())
-      .then((data) => setMenuData(data.menu));
+      .then((data) => {
+        setMenuData(data.menu);
+        setIsLoading(false);
+      });
   }, []);
 
   const handleMenuClick = (menuTitle: string) => {
@@ -28,7 +32,7 @@ export default function NavMenu() {
 
   return (
     <ul className="main-menu rest">
-      {menuData.map((menu, index) => (
+      {!isLoading && menuData.map((menu, index) => (
         <li
           key={index} 
           className={clsx({ 'hoverd': hoveredMenu && hoveredMenu !== menu.title })}

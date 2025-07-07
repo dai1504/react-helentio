@@ -12,11 +12,15 @@ interface Payment {
   
 export default function Footer() {
     const [payments, setPayments] = useState<Payment[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch("/json/paymentMethods.json")
         .then((res) => res.json())
-        .then((data) => setPayments(data.payments));
+        .then((data) => {
+            setPayments(data.payments);
+            setIsLoading(false);
+        });
     }, []);
 
     return (
@@ -106,7 +110,7 @@ export default function Footer() {
                                 Copyright Dotcreativemarket, All Rights Reserved
                             </div>
                             <div className="payment-list">
-                                {payments.map((payment) => (
+                                {!isLoading && payments.map((payment) => (
                                     <Image
                                     key={payment.id}
                                     src={payment.src}

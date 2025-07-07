@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface FAQ {
   id: string;
@@ -8,14 +10,21 @@ interface FAQ {
   answer: string;
 }
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function FaqSection() {
   const [faqs, setFaqs] = useState<FAQ[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("/json/faq.json")
       .then((res) => res.json())
-      .then((data) => setFaqs(data.faqs));
+      .then((data) => {
+        setFaqs(data.faqs);
+        setIsLoading(false);
+      });
   }, []);
+
 
   return (
     <section className="home-faq-section section-line">
@@ -32,7 +41,7 @@ export default function FaqSection() {
               <div className="col-md-6 d-flex">
                   <div className="faq-accordition">
                       <div className="accordion" id="accordionFaq">
-                        {faqs.map((faq, index) => (
+                        {!isLoading && faqs.map((faq, index) => (
                           <div className="accordion-item anim-fadein" key={faq.id}>
                             <h2 className="accordion-header" id={`heading-${faq.id}`}>
                               <button

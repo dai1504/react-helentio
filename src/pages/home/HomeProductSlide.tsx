@@ -15,15 +15,21 @@ interface ProductItem {
 }
 export default function HomeProductSlide() {
     const [productData, setProductData] = useState<ProductItem[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
     fetch("/json/products.json")
         .then((res) => res.json())
-        .then((data) => setProductData(data.products));
+        .then((data) => {
+            setProductData(data.products);
+            setIsLoading(false);
+        });
     }, []);
-    if (!productData) {
+    
+    if (isLoading) {
         return <p>Loading...</p>;
     }
+    
     return (
         <section className="home-product-slide-section section-line">
             <div className="el">

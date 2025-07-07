@@ -12,11 +12,15 @@ interface CollectionItem {
 }
 export default function HomeCollection() {
     const [collectionData, setCollectionData] = useState<CollectionItem[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
     fetch("/json/collection.json")
         .then((res) => res.json())
-        .then((data) => setCollectionData(data.collection));
+        .then((data) => {
+            setCollectionData(data.collection);
+            setIsLoading(false);
+        });
     }, []);
     
     return (
@@ -46,63 +50,65 @@ export default function HomeCollection() {
             <div className="container-custom">
                 <div className="col-12">
                     <div className="collection-slide anim-fadein">
-                        <Swiper
-                            modules={[Navigation, Pagination]}
-                            slidesPerView={1}
-                            spaceBetween={40}
-                            speed={2000}
-                            watchSlidesProgress={true}
-                            breakpoints={{
-                                992: {
-                                    slidesPerView: 'auto',
-                                    spaceBetween: 100,
-                                    
-                                },
-                                768: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 40,
-                                    
-                                },
-                                600: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 40,
-                                    
-                                },
-                                576: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 40,
-                                    
-                                },
-                        
-                            }}
+                        {!isLoading && (
+                            <Swiper
+                                modules={[Navigation, Pagination]}
+                                slidesPerView={1}
+                                spaceBetween={40}
+                                speed={2000}
+                                watchSlidesProgress={true}
+                                breakpoints={{
+                                    992: {
+                                        slidesPerView: 'auto',
+                                        spaceBetween: 100,
+                                        
+                                    },
+                                    768: {
+                                        slidesPerView: 3,
+                                        spaceBetween: 40,
+                                        
+                                    },
+                                    600: {
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                        
+                                    },
+                                    576: {
+                                        slidesPerView: 1,
+                                        spaceBetween: 40,
+                                        
+                                    },
                             
-                        
-                            pagination={{
-                                el: '.collection-pagination',
-                                clickable: true,
-                                dynamicBullets: true,
-                                dynamicMainBullets: 2
-                            }}
-                        
-                            navigation={{
-                                nextEl: '.collection-btn-next',
-                                prevEl: '.collection-btn-prev'
-                            }}
-                            >
+                                }}
+                                
                             
-                            {collectionData.map((collection, index) => (
-                                <SwiperSlide key={index}>
-                                    <a href={collection.url} className={`collection-card ${index % 2 === 1 ? "__2" : "__1"}`}>
-                                        <div className="collection-card-img">
-                                            <Image src={collection.image} alt="" fill sizes="1000px" />
-                                        </div>
-                                        <div className="collection-card-content">
-                                            <h3>{collection.title}</h3>
-                                        </div>
-                                    </a>
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
+                                pagination={{
+                                    el: '.collection-pagination',
+                                    clickable: true,
+                                    dynamicBullets: true,
+                                    dynamicMainBullets: 2
+                                }}
+                            
+                                navigation={{
+                                    nextEl: '.collection-btn-next',
+                                    prevEl: '.collection-btn-prev'
+                                }}
+                                >
+                                
+                                {collectionData.map((collection, index) => (
+                                    <SwiperSlide key={index}>
+                                        <a href={collection.url} className={`collection-card ${index % 2 === 1 ? "__2" : "__1"}`}>
+                                            <div className="collection-card-img">
+                                                <Image src={collection.image} alt="" fill sizes="1000px" />
+                                            </div>
+                                            <div className="collection-card-content">
+                                                <h3>{collection.title}</h3>
+                                            </div>
+                                        </a>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
                     </div>
                 </div>
             </div>

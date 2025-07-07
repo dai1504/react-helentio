@@ -40,8 +40,10 @@ export default function HomeProduct() {
                             <h2>Curated collections of high-quality furniture designed to elevate every room in your home.</h2>
                             <ButtonSite text={"Contact for Consulting"} href="#" styleButton="arTop" />
                         </div>
+                        
                     </div>
                     <div className="col-md-5">
+                        
                         <div className="content anim-fadein">
                             <p>
                                 Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor.

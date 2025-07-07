@@ -732,6 +732,8 @@ window.ScrollEffects = function () {
   });
 };
 
+var ScrollEffects = window.ScrollEffects;
+
 window.Core = function () {
   if (!isMobile() && !$("body").hasClass("disable-cursor")) {
     var mouse = { x: 0, y: 0 };

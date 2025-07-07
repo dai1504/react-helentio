@@ -11,11 +11,14 @@ import dt1 from "../../../../public/images/home/el-1.png";
 import dt2 from "../../../../public/images/home/el-2.png";
 import bg from "../../../../public/images/home/2.jpg";
 import useResponsive from "@/components/useResponsive";
+import { useCart } from "@/lib/cartContext";
+
 interface Product {
     id: string;
     title: string;
     price: string;
     images: string[];
+    catelogy: string;
 }
 
 export default function ProductDetail() {
@@ -23,10 +26,12 @@ export default function ProductDetail() {
     const router = useRouter();
     const [product, setProduct] = useState<Product | null>(null);
     const { isMobile } = useResponsive();
-    useEffect(() => {
-
+    const [isLoading, setIsLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
+    const [selectedColor, setSelectedColor] = useState("Brown");
+    const { addItem, toggleCart } = useCart();
     
-
+    useEffect(() => {
         const oldScript = document.getElementById("product-script");
         if (oldScript) {
           oldScript.remove();
@@ -40,7 +45,7 @@ export default function ProductDetail() {
         if (!params?.detail) return; 
 
         async function fetchProduct() {
-            console.log("Fetching product for ID:", params.detail);
+            console.log("Fetching product for ID:", params?.detail);
             try {
                 const res = await fetch(`/json/products.json`);
 
@@ -51,7 +56,7 @@ export default function ProductDetail() {
                 }
 
                 const data = await res.json();
-                const foundProduct = data.products.find((p: Product) => p.id === params.detail);
+                const foundProduct = data.products.find((p: Product) => p.id === params?.detail);
 
                 if (!foundProduct) {
                     console.error("Product not found");
@@ -61,6 +66,7 @@ export default function ProductDetail() {
 
                 console.log("Product Data:", foundProduct);
                 setProduct(foundProduct);
+                setIsLoading(false);
             } catch (error) {
                 console.error("Error fetching product:", error);
             }
@@ -73,7 +79,30 @@ export default function ProductDetail() {
         };
     }, [params?.detail, router]);
 
-    if (!product) return <p>Loading product...</p>;
+    const handleQuantityChange = (newQuantity: number) => {
+        if (newQuantity >= 1) {
+            setQuantity(newQuantity);
+        }
+    };
+
+    const handleAddToCart = () => {
+        if (!product) return;
+        
+        addItem({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.images[0],
+            quantity: quantity,
+            color: selectedColor,
+            category: product.catelogy,
+        });
+        
+        // Open cart after adding item
+        toggleCart();
+    };
+
+    if (isLoading || !product) return <p>Loading product...</p>;
 
     return (
         <>
@@ -136,16 +165,24 @@ export default function ProductDetail() {
                                 <div className="box-title">
                                     <div className="title">
                                         <h1>{product.title}</h1>
-                                        <h5>{product.catelogy}</h5>
                                     </div>
                                     <div className="product-quality">
-                                        <div className="qtybutton dec">-</div>
-                                        <input type="number" value="1" className="cart-plus-minus-box" step="1" min="1" name="quantity" readOnly />
+                                        <div className="qtybutton dec" onClick={() => handleQuantityChange(quantity - 1)}>-</div>
+                                        <input 
+                                            type="number" 
+                                            value={quantity} 
+                                            className="cart-plus-minus-box" 
+                                            step="1" 
+                                            min="1" 
+                                            name="quantity" 
+                                            readOnly 
+                                            aria-label="Product quantity"
+                                        />
                                         
-                                        <div className="qtybutton inc">+</div>
+                                        <div className="qtybutton inc" onClick={() => handleQuantityChange(quantity + 1)}>+</div>
                                     </div>
                                     <div className="btn-product">
-                                        <button className="btn-theme">ADD TO CART</button>
+                                        <button className="btn-theme" onClick={handleAddToCart}>ADD TO CART</button>
                                         <div className="box-price">
                                             {product.price}
                                         </div>
@@ -154,13 +191,37 @@ export default function ProductDetail() {
                                 <div className="box-size widget-product">
                                     <h3>Color</h3>
                                     <div className="size-pick-div">
-                                        <input type="radio" name="sizes-btn" id="color-1" defaultChecked />
+                                        <input 
+                                            type="radio" 
+                                            name="sizes-btn" 
+                                            id="color-1" 
+                                            checked={selectedColor === "Brown"}
+                                            onChange={() => setSelectedColor("Brown")}
+                                        />
                                         <label htmlFor="color-1" className="sizes">Brown</label>
-                                        <input type="radio" name="sizes-btn" id="color-2" readOnly />
+                                        <input 
+                                            type="radio" 
+                                            name="sizes-btn" 
+                                            id="color-2" 
+                                            checked={selectedColor === "Black"}
+                                            onChange={() => setSelectedColor("Black")}
+                                        />
                                         <label htmlFor="color-2" className="sizes">Black</label>
-                                        <input type="radio" name="sizes-btn" id="color-3" readOnly />
+                                        <input 
+                                            type="radio" 
+                                            name="sizes-btn" 
+                                            id="color-3" 
+                                            checked={selectedColor === "White"}
+                                            onChange={() => setSelectedColor("White")}
+                                        />
                                         <label htmlFor="color-3" className="sizes">White</label>
-                                        <input type="radio" name="sizes-btn" id="color-4" readOnly />
+                                        <input 
+                                            type="radio" 
+                                            name="sizes-btn" 
+                                            id="color-4" 
+                                            checked={selectedColor === "Vani"}
+                                            onChange={() => setSelectedColor("Vani")}
+                                        />
                                         <label htmlFor="color-4" className="sizes">Vani</label>
                                     </div>
 
@@ -198,27 +259,12 @@ export default function ProductDetail() {
                 </div>
                 <div className="container-custom">
                     <div className="row gx-5 justify-content-center">
-                        <div className="col-md-8 col-lg-6">
-                            <div className="content __1 text-center anim-fadein">
-                                <h2>Crafting Comfort, One Piece at a Time</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam.</p>
+                        <div className="col-lg-10">
+                            <div className="content-big anim-fadein">
+                                <h2>Product Content</h2>
                             </div>
-                        </div>
-                    </div>
-                    <div className="row justify-content-center">
-                        <div className="col-md-7">
-                            <div className="home-content-img-2">
-                                <Image className="anim-zoomin" src={bg} alt="" />
-                            </div>
-                        </div>
-                        <div className="col-md-4 align-self-end">
-                            <div className="content __2 anim-fadein">
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor.
-                                    <br/><br/>
-                                    Phasellus pellentesque egestas ac egestas. Turpis dictum fusce urna posuere diam bibendum nisi vestibulum. Tincidunt aliquet non gravida id maecenas eu. A bibendum sit eget ac pellentesque. Dignissim nibh enim est tortor.
-                                </p>
-                                <a href="#" className="btn-site ar-top"> <span className="btn-t">Find out more</span> <span className="btn-ic"><i className="fal fa-arrow-right"></i></span></a>
+                            <div className="content anim-fadein">
+                                <p>Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor.</p>
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,13 @@
+"use client";
 import Image from "next/image";
 import contentEl1 from "../../../public/images/home/el-1.png";
 import contentEl2 from "../../../public/images/home/el-2.png";
 import ButtonSite from "@/components/button/button";
+
+
 export default function HomeContent() {
+    
+    
     return (
         <section className="home-content-section section-line">
             <div className="el-1">
@@ -31,6 +36,7 @@ export default function HomeContent() {
                     <div className="col-md-7">
                         <div className="home-content-img-2">
                             <Image className="anim-zoomin" src="/images/home/2.jpg" alt="" fill sizes="1200px"/>
+                            
                         </div>
                     </div>
                     <div className="col-md-4 align-self-end">

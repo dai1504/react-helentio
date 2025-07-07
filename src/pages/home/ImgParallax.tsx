@@ -38,6 +38,7 @@ export default function ImgParallax() {
           end: () => `+=${hParallax.offsetHeight + window.innerHeight}`,
           animation: parallax,
           scrub: true,
+          
         });
       });
     }, 300); 
