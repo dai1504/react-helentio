@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link"
 
-const ProductCard = ({ product }) => {
+interface Product {
+    id: string;
+    imgUrl: string;
+    imgHover: string;
+    title: string;
+    price: string;
+}
+
+const ProductCard = ({ product }: { product: Product }) => {
     const hasImgUrl = !!product.imgUrl;
     const hasImgHover = !!product.imgHover;
     return (
