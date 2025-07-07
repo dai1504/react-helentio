@@ -14,7 +14,7 @@ export function FadeInSection({ children, className = "" }: { children: ReactNod
     () => {
       const boxes = gsap.utils.toArray('.anim-fadein');
       boxes.forEach((el) => {
-        gsap.to(el, {
+        gsap.to(el as Element, {
           y: 0,
           opacity: 1,
           duration: 1.2,
@@ -22,7 +22,7 @@ export function FadeInSection({ children, className = "" }: { children: ReactNod
           clearProps: "all",
           autoAlpha: 1,
           scrollTrigger: {
-            trigger: el,
+            trigger: el as Element,
             start: 'top 90%',
             
             scrub: true,
