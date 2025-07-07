@@ -12,7 +12,10 @@ export default function JQueryHandler() {
 
     // Wait for DOM update
     setTimeout(() => {
-      $(".space-top").css("padding-top", $(".site-header").height());
+      const headerHeight = $(".site-header").height();
+      if (headerHeight !== undefined) {
+        $(".space-top").css("padding-top", headerHeight);
+      }
     }, 100);
   }, [pathname]); // Runs every time the page changes
 
