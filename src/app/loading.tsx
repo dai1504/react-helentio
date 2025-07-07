@@ -77,7 +77,7 @@ export default function Loading() {
                         durataion = time + 0;
                         animateValue(PercentageID, start, end, durataion);
                         
-                function animateValue(id, start, end, duration) {
+                function animateValue(id: any, start: number, end: number, duration: number) {
                   
                     var range = end - start,
                       current = start,
