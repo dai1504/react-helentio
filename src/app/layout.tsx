@@ -27,14 +27,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <ScriptLoader />
       <body>
-          <Loading />
+        {/* <Loading />   */}
           <CartProvider>
-          <main>
-            <Header />
+          <Header />
             
-            {children}
-            <Footer />
-          </main>
+          {children}
+          <Footer />
           </CartProvider>
 
          

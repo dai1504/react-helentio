@@ -7,6 +7,22 @@
         "image1": "/images/banner/bn-1.jpg",
         "image2": "/images/banner/bn-2.jpg"
 
+    },
+    "homeimg": { 
+        "subtitle": "TRANSFORM", 
+        "title": "MEETS COMFORT",
+        "image1": "/images/home/3.jpg",
+        "image2": "/images/home/4.jpg"
+
+    },
+    "homecontent": {
+        "title": "Crafting Comfort, One Piece at a Time",
+        "desc1": "Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam.",
+        "desc2": "Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor. <br/><br/>Phasellus pellentesque egestas ac egestas. Turpis dictum fusce urna posuere diam bibendum nisi vestibulum. Tincidunt aliquet non gravida id maecenas eu. A bibendum sit eget ac pellentesque. Dignissim nibh enim est tortor.",
+        "image1": "/images/home/1.jpg",
+        "image2": "/images/home/2.jpg",
+        "btnText": "Find out more",
+        "btnLink": "#"
     }
 }
   

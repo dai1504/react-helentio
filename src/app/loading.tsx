@@ -10,7 +10,7 @@ export default function Loading() {
         function PageLoad() {
             function initOnFirstLoad() {
                 imagesLoaded('body', function() {
-                    gsap.set($("#main"), {opacity: 0});
+                   
                     gsap.to("#preload .logo",0.25, {
                         delay: 0.5,
                         opacity: 0,

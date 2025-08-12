@@ -1,16 +1,19 @@
-'use client'
+'use client';
 import Image from "next/image";
 import bannerEl1 from "../../../public/images/banner/el-1.png";
 import bannerEl2 from "../../../public/images/banner/el-2.png";
 import { useEffect, useState } from "react";
-export default function HomeBanner() {
+export default function HomeBanner({ onLoaded }: { onLoaded: () => void }) {
     const [banner, setBannerData] = useState<any | null>(null);
     
     useEffect(() => {
     fetch("/json/contentHome.json")
         .then((res) => res.json())
-        .then((data) => setBannerData(data.homebanner));
-    }, []);
+        .then((data) => {
+            setBannerData(data.homebanner);
+            onLoaded();
+        });
+    }, [onLoaded]);
 
     if (!banner) {
         return <p>Loading...</p>;

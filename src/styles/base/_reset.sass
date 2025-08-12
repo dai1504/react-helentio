@@ -8,7 +8,7 @@
 
 html
   margin-right: 0px !important
-  overflow: visible !important
+  // overflow: visible !important
   // overflow-x: hidden
   // font-size: $size_pc_root + vw
   @media screen and ( max-width: 1199.82px )
@@ -33,7 +33,7 @@ body
   font-size: 15px
   line-height: 1.4
   font-weight: $font-regular
-  // overflow-x: hidden
+  overflow-x: hidden
   background-color: $color-bg
   // background-image: url(../images/bg-pattern.png)
   // background-repeat: repeat
@@ -44,8 +44,8 @@ body
   background-color: $color-bg
   // background-image: url(../images/bg-pattern.png)
   background-repeat: repeat
-main 
-  position: relative
+// main 
+//   position: relative
 #main
   width: 100%
   overflow-x: hidden
@@ -256,7 +256,7 @@ h6.has-mask span
 .scrollbar-track 
   background: transparent!important
 main
-  overflow: hidden
+  // overflow: hidden
 	
 main 
   .cd-main-content
@@ -366,7 +366,7 @@ html.lenis
   height: 100%
   top: 0
   left: 0
-  // overflow: hidden
+  overflow: hidden
   img 
     transition: unset!important
 .anim-zoomin-inner
@@ -390,4 +390,12 @@ html.lenis
 
 ::-webkit-scrollbar-thumb:hover 
   background: $color-2
+
+
+
+body
+  &:not(.page-loaded) *
+    visibility: hidden
+  .page-loaded * 
+    visibility: visible
 

@@ -4,13 +4,14 @@ import { useEffect, useState } from "react";
 import collectionEl1 from "../../../public/images/home/el-3.png";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FadeInSection } from "@/components/scrollEffects";
 interface CollectionItem {
     id: string;
     title: string;
     url: string;
     image: string;
 }
-export default function HomeCollection() {
+export default function HomeCollection({ onLoaded }: { onLoaded: () => void }) {
     const [collectionData, setCollectionData] = useState<CollectionItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,8 +21,9 @@ export default function HomeCollection() {
         .then((data) => {
             setCollectionData(data.collection);
             setIsLoading(false);
+            onLoaded();
         });
-    }, []);
+    }, [onLoaded]);
     
     return (
         <section className="home-collection-section section-line">
@@ -31,25 +33,25 @@ export default function HomeCollection() {
             <div className="container-custom">
                 <div className="row justify-content-between">
                     <div className="col-md-4 align-self-end">
-                        <div className="content anim-fadein">
+                        <FadeInSection className="content anim-fadein">
                             <p>
                                 Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. 
                                 <br/><br/>
                                 Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor.
                             </p>
-                        </div>
+                        </FadeInSection>
                     </div>
                     <div className="col-md-7">
-                        <div className="content-big anim-fadein">
+                        <FadeInSection className="content-big anim-fadein">
                             <h3>GATHER</h3>
                             <h2>SANCTUARY</h2>
-                        </div>
+                        </FadeInSection>
                     </div>
                 </div>
             </div>
             <div className="container-custom">
                 <div className="col-12">
-                    <div className="collection-slide anim-fadein">
+                    <FadeInSection className="collection-slide anim-fadein">
                         {!isLoading && (
                             <Swiper
                                 modules={[Navigation, Pagination]}
@@ -109,7 +111,7 @@ export default function HomeCollection() {
                                 ))}
                             </Swiper>
                         )}
-                    </div>
+                    </FadeInSection>
                 </div>
             </div>
             <div className="line-bottom"></div>

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FadeInSection } from "@/components/scrollEffects";
+import ZoomInSection from "@/components/zoomInEffect";
 
 interface FAQ {
   id: string;
@@ -12,7 +14,7 @@ interface FAQ {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FaqSection() {
+export default function FaqSection({ onLoaded }: { onLoaded: () => void }) {
   const [faqs, setFaqs] = useState<FAQ[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -22,18 +24,19 @@ export default function FaqSection() {
       .then((data) => {
         setFaqs(data.faqs);
         setIsLoading(false);
+        onLoaded();
       });
-  }, []);
+  }, [onLoaded]);
 
 
   return (
     <section className="home-faq-section section-line">
       <div className="row">
           <div className="col-12">
-              <div className="content-big anim-fadein">
+              <FadeInSection className="content-big anim-fadein">
                   <h3>FAQ</h3>
                   <h2>ANSWERS</h2>
-              </div>
+              </FadeInSection>
           </div>
       </div>
       <div className="faq-wrapper">
@@ -42,7 +45,7 @@ export default function FaqSection() {
                   <div className="faq-accordition">
                       <div className="accordion" id="accordionFaq">
                         {!isLoading && faqs.map((faq, index) => (
-                          <div className="accordion-item anim-fadein" key={faq.id}>
+                          <FadeInSection className="accordion-item anim-fadein" key={faq.id}>
                             <h2 className="accordion-header" id={`heading-${faq.id}`}>
                               <button
                                 className={`accordion-button ${
@@ -70,14 +73,16 @@ export default function FaqSection() {
                             >
                               <div className="accordion-body">{faq.answer}</div>
                             </div>
-                          </div>
+                          </FadeInSection>
                         ))}
                       </div>
                   </div>
               </div>
               <div className="col-md-6">
                   <div className="faq-img">
-                      <Image className="anim-zoomin" src="/images/home/6.jpg" alt="" fill sizes="1200px"/>
+                      <ZoomInSection>
+                          <Image className="anim-zoomin" src="/images/home/6.jpg" alt="" fill sizes="1200px"/>
+                      </ZoomInSection>
                   </div>
               </div>
           </div>

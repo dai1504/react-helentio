@@ -1,10 +1,12 @@
-'use client'
+'use client';
 import ProductCard from "@/components/product/productCard";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import productSlideEl2 from "../../../public/images/home/el-4.png";
 import productBG from "../../../public/images/product/bg-1.jpg";
 import ButtonSite from "@/components/button/button";
+import { FadeInSection } from "@/components/scrollEffects";
+import ZoomInSection from "@/components/zoomInEffect";
 interface ProductItem {
     id: string;
     title: string;
@@ -13,7 +15,7 @@ interface ProductItem {
     imgUrl: string;
     imgHover: string;
 }
-export default function HomeProductSlide() {
+export default function HomeProductSlide({ onLoaded }: { onLoaded: () => void }) {
     const [productData, setProductData] = useState<ProductItem[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -23,8 +25,9 @@ export default function HomeProductSlide() {
         .then((data) => {
             setProductData(data.products);
             setIsLoading(false);
+            onLoaded();
         });
-    }, []);
+    }, [onLoaded]);
     
     if (isLoading) {
         return <p>Loading...</p>;
@@ -37,20 +40,22 @@ export default function HomeProductSlide() {
             </div>
             <div className="row">
                 <div className="col-md-6 align-self-center">
-                    <div className="content-medium anim-fadein">
+                    <FadeInSection className="content-medium anim-fadein">
                         <h2>Furniture with a Purpose</h2>
-                    </div>
-                    <div className="content __2 anim-fadein">
+                    </FadeInSection>
+                    <FadeInSection className="content __2 anim-fadein">
                         <p>Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor.</p>
                         <ButtonSite text={"Find out more"} href="#" styleButton="arTop" />
-                    </div>
+                    </FadeInSection>
                 </div>
                 <div className="col-md-6">
                     <div className="furniture-wrapper">
                         <div className="bg">
-                            <Image className="anim-zoomin" src={productBG} alt="" fill sizes="1500px" />
+                            <ZoomInSection>
+                                <Image className="anim-zoomin" src={productBG} alt="" fill sizes="1500px" />
+                            </ZoomInSection>
                         </div>
-                        <div className="furniture-slide anim-fadein">
+                        <FadeInSection className="furniture-slide anim-fadein">
                             <div className="swiper">
                                 <div className="swiper-wrapper">
                                     {productData.slice(0, 6).map((product, index) => (
@@ -64,7 +69,7 @@ export default function HomeProductSlide() {
                                 <div className="furniture-button furniture-button-prev"><i className="fal fa-arrow-left"></i></div>
                                 <div className="furniture-button furniture-button-next"><i className="fal fa-arrow-right"></i></div>
                             </div>
-                        </div>
+                        </FadeInSection>
                     </div>
                 </div>
             </div>

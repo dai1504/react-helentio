@@ -3,11 +3,26 @@ import Image from "next/image";
 import contentEl1 from "../../../public/images/home/el-1.png";
 import contentEl2 from "../../../public/images/home/el-2.png";
 import ButtonSite from "@/components/button/button";
+import { FadeInSection } from "@/components/scrollEffects";
+import ZoomInSection from "@/components/zoomInEffect";
+import { useEffect, useState } from "react";
 
 
-export default function HomeContent() {
-    
-    
+export default function HomeContent({ onLoaded }: { onLoaded: () => void }) {
+    const [content, setContentData] = useState<any | null>(null);
+            
+    useEffect(() => {
+        fetch("/json/contentHome.json")
+            .then((res) => res.json())
+            .then((data) => {
+                setContentData(data.homecontent);
+                onLoaded();
+            });
+    }, [onLoaded]);
+
+    if (!content) {
+        return <p>Loading...</p>;
+    }
     return (
         <section className="home-content-section section-line">
             <div className="el-1">
@@ -20,14 +35,20 @@ export default function HomeContent() {
                 <div className="row gx-5">
                     <div className="col-md-4">
                         <div className="home-content-img">
-                            <Image className="anim-zoomin" src="/images/home/1.jpg" alt="" fill sizes="1200px"/>
+                            <ZoomInSection>
+                                <Image className="anim-zoomin" src={content.image1} alt="" fill sizes="1200px"/>
+                            </ZoomInSection>
+                            
                         </div>
                     </div>
                     <div className="col-md-4">
-                        <div className="content __1 anim-fadein">
-                            <h2>Crafting Comfort, One Piece at a Time</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam.</p>
-                        </div>
+                        <FadeInSection className="anim-fadein">
+                            <div className="content __1">
+                                <h2>{content.title}</h2>
+                                <p>{content.desc1}</p>
+                            </div>
+                        </FadeInSection>
+                        
                     </div>
                 </div>
                 <div className="row">
@@ -35,15 +56,21 @@ export default function HomeContent() {
 
                     <div className="col-md-7">
                         <div className="home-content-img-2">
-                            <Image className="anim-zoomin" src="/images/home/2.jpg" alt="" fill sizes="1200px"/>
+                            <ZoomInSection>
+                                <Image className="anim-zoomin" src={content.image2} alt="" fill sizes="1200px"/>
+                            </ZoomInSection>
+                            
                             
                         </div>
                     </div>
                     <div className="col-md-4 align-self-end">
-                        <div className="content __2 anim-fadein">
-                            <p>Lorem ipsum dolor sit amet consectetur. Maecenas blandit adipiscing a morbi at senectus. Tristique mauris sed porttitor cras donec feugiat diam. Morbi faucibus risus vel velit. Nisl donec a dictum consectetur. Quis mattis fringilla in cursus eget sapien egestas nec enim. Non lectus et nisl porttitor. <br/><br/>Phasellus pellentesque egestas ac egestas. Turpis dictum fusce urna posuere diam bibendum nisi vestibulum. Tincidunt aliquet non gravida id maecenas eu. A bibendum sit eget ac pellentesque. Dignissim nibh enim est tortor.</p>
-                            <ButtonSite text="Find out more" href="#" styleButton="arTop" />
-                        </div>
+                        <FadeInSection className="anim-fadein">
+                            <div className="content __2">
+                                <p dangerouslySetInnerHTML={{ __html: content.desc2 }}></p>
+                                <ButtonSite text={content.btnText} href={content.btnLink} styleButton="arTop" />
+                            </div>
+                        </FadeInSection>
+                        
                     </div>
                 </div>
             </div>
